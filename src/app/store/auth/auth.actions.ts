@@ -11,7 +11,7 @@ export const authLogin = createAction(
     props<AuthPayload & { redirect: boolean }>()
 );
 
-export const authLogout = createAction('[AUTH] Auth Logout');
+export const authLogout = createAction('[AUTH] Auth Logout', props<{ token: string }>());
 
 export const authFail = createAction('[AUTH] Auth Fail');
 

@@ -57,7 +57,12 @@ export class UserDeleteDialogComponent implements OnInit {
                     });
 
                     if (this.selfDelete) {
-                        this.store.dispatch(authLogout());
+                        this.store
+                            .select((store) => store.auth.token)
+                            .pipe(first())
+                            .subscribe((token) => {
+                                this.store.dispatch(authLogout({ token: token || '' }));
+                            });
                     }
                 },
             });

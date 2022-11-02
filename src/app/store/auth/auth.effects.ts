@@ -79,6 +79,23 @@ export class AuthEffects {
         () =>
             this.actions$.pipe(
                 ofType(authLogout),
+                switchMap(({ token }) => {
+                    console.log(token);
+                    if (token) {
+                        return this.authService.deleteAuth(token || '').pipe(map((value) => {}));
+                    } else {
+                        return of({});
+                    }
+                }),
+                tap(() => this.router.navigate(['/login']))
+            ),
+        { dispatch: false }
+    );
+
+    authCheckTokenFail$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(authCheckTokenFail),
                 tap(() => this.router.navigate(['/login']))
             ),
         { dispatch: false }

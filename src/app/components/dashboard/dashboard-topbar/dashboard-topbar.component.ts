@@ -5,6 +5,7 @@ import { SideMenuState } from '../../../store/sidemenu/sidemenu.reducer';
 import { AuthState } from '../../../store/auth/auth.reducers';
 import { authLogout } from '../../../store/auth/auth.actions';
 import { selectAuthUser } from '../../../store/auth/auth.selectors';
+import { first } from 'rxjs';
 
 @Component({
     selector: 'app-dashboard-topbar',
@@ -28,6 +29,11 @@ export class DashboardTopbarComponent {
     }
 
     logout(): void {
-        this.store.dispatch(authLogout());
+        this.store
+            .select((store) => store.auth.token)
+            .pipe(first())
+            .subscribe((token) => {
+                this.store.dispatch(authLogout({ token: token || '' }));
+            });
     }
 }

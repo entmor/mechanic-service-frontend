@@ -63,6 +63,23 @@ describe('AuthService', () => {
         req.flush(response);
     });
 
+    it('should delete token [deleteAuth]', () => {
+        service.deleteAuth(token).subscribe((res) => {
+            expect(res).toEqual({
+                deleted: true,
+            });
+        });
+
+        const req = httpTestingController.expectOne(`${apiBaseUrl}/v1/auth`);
+
+        expect(req.request.method).toEqual('DELETE');
+        expect(req.request.headers.get('authorization')).toEqual(`Bearer ${token}`);
+
+        req.flush({
+            deleted: true,
+        });
+    });
+
     it('should give an error if set Auth fails', () => {
         service.setAuth(email, password).subscribe({
             error: (err) => {

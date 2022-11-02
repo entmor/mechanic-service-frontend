@@ -29,4 +29,12 @@ export class AuthService {
             },
         });
     }
+
+    deleteAuth(token: string): Observable<{ deleted: boolean }> {
+        return this.httpClient.delete<{ deleted: boolean }>(`${this.apiBaseUrl}/v1/auth`, {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+        });
+    }
 }
