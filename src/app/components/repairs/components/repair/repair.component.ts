@@ -15,6 +15,13 @@ export class RepairComponent extends Subscriptions implements OnInit {
     /***************  GETTERS / SETTERS / INPUTES / OUTPUTES ETC.  ***************/
 
     @Input() isSaving = false;
+    @Input() set isUpdated(isUpdated: boolean) {
+        if (isUpdated) this.presenter.onEditRepair();
+    }
+    @Input() set isAdded(isAdded: boolean) {
+        if (isAdded) this.presenter.onAddRepair();
+        window.scrollTo(0, 0);
+    }
     @Input() set repair(repair: Repair) {
         this.presenter.repair = repair;
     }

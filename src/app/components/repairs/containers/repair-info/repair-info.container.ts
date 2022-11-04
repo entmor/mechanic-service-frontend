@@ -3,8 +3,6 @@ import { Repair } from '../../../../interface/repair.interface';
 import { RepairsService } from '../../../../services/repairs.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DashboardHeaderNavi } from '../../../../interface/dashboard-header-navi.interface';
-import { Store } from '@ngrx/store';
-import { setSuccessSnackbar } from '../../../../store/snackbar/snackbar.actions';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -15,6 +13,8 @@ export class RepairInfoContainerComponent {
     /***************  GETTERS / SETTERS / INPUTES / OUTPUTES ETC.  ***************/
 
     isSaving = false;
+    isAdded = this.activatedRoute.snapshot.queryParams['added'] ? true : false;
+    isUpdated = false;
 
     headerNavi: DashboardHeaderNavi[] = [
         {
@@ -36,14 +36,14 @@ export class RepairInfoContainerComponent {
     constructor(
         private repairsService: RepairsService,
         private router: Router,
-        private activatedRoute: ActivatedRoute,
-        private store: Store
+        private activatedRoute: ActivatedRoute
     ) {}
 
     /***************  METHODS   ***************/
 
     updateRepair(repair: Repair) {
         this.isSaving = true;
+        this.isUpdated = false;
 
         this.repairsService
             .updateRepair({
@@ -51,12 +51,8 @@ export class RepairInfoContainerComponent {
                 id: this.repair?.id || null,
             })
             .pipe(finalize(() => (this.isSaving = false)))
-            .subscribe((res) =>
-                this.store.dispatch(
-                    setSuccessSnackbar({
-                        message: 'Naprawa została zaktualizowana',
-                    })
-                )
-            );
+            .subscribe((res) => {
+                this.isUpdated = true;
+            });
     }
 }

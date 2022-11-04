@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Repair, RepairCostsFormGroup, RepairPart } from '../../../interface/repair.interface';
 import { Store } from '@ngrx/store';
-import { setWarnSnackbar } from '../../../store/snackbar/snackbar.actions';
+import { setSuccessSnackbar, setWarnSnackbar } from '../../../store/snackbar/snackbar.actions';
 import { Vehicle } from '../../../interface/vehicle.interface';
 
 @Injectable()
@@ -54,6 +54,18 @@ export class RepairPresenter {
     constructor(private store: Store) {}
 
     /***************  METHODS   ***************/
+
+    onAddRepair() {
+        this.store.dispatch(setSuccessSnackbar({ message: 'Naprawa została dodana' }));
+    }
+
+    onEditRepair() {
+        this.store.dispatch(
+            setSuccessSnackbar({
+                message: 'Naprawa została zaktualizowana',
+            })
+        );
+    }
 
     onSaveRepair() {
         if (this.areFormsValid) {

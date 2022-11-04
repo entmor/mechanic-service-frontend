@@ -39,6 +39,10 @@ export class RepairAddContainerComponent {
         this.repairsService
             .setRepair(repair)
             .pipe(finalize(() => (this.isSaving = false)))
-            .subscribe((res) => this.router.navigate([`/dashboard/repairs/info/${res.id}`]));
+            .subscribe((res) =>
+                this.router.navigate([`/dashboard/repairs/info/${res.id}`], {
+                    queryParams: { added: true },
+                })
+            );
     }
 }
