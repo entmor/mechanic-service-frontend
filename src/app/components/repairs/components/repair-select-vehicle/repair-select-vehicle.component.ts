@@ -35,6 +35,10 @@ export class RepairSelectVehicleComponent extends Subscriptions implements OnIni
         return this.presenter.searchVehicle;
     }
 
+    get vehicleFormControl() {
+        return this.presenter.vehicleFormControl;
+    }
+
     get selectedVehicle() {
         return this.presenter.selectedVehicle;
     }
@@ -52,7 +56,7 @@ export class RepairSelectVehicleComponent extends Subscriptions implements OnIni
     /***************  LIFE-CYCLES COMPONENT   ***************/
 
     ngOnInit(): void {
-        this.vehicleChange.emit(this.searchVehicle);
+        this.vehicleChange.emit(this.vehicleFormControl);
 
         this.addSubscription = this.presenter.getVehicles$.subscribe((value) =>
             this.getVehicles.emit(value)
