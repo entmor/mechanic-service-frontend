@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="col-auto">
-                    <button mat-flat-button color="primary" class="button-big">
+                    <button mat-flat-button color="primary" class="button-big" data-cy="login">
                         <span *ngIf="(inProccess$ | async) === false">Zaloguj się</span>
                         <mat-progress-spinner
                             *ngIf="inProccess$ | async"

@@ -123,6 +123,7 @@
         mat-flat-button
         color="primary"
         class="button-big"
+        data-cy="saveUser"
         [disabled]="form.invalid || (changePassword && passwordForm.invalid)"
         (click)="saveUser()"
     >

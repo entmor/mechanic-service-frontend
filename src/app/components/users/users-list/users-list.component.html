@@ -1,6 +1,13 @@
 <div id="cars-list-view" class="template-padding">
     <app-page-header [headerNavi]="headerNavi">
-        <button right mat-flat-button class="button-big" color="primary" (click)="addUser()">
+        <button
+            right
+            mat-flat-button
+            class="button-big"
+            color="primary"
+            data-cy="addUser"
+            (click)="addUser()"
+        >
             Dodaj nowego użytkownika
         </button>
     </app-page-header>
