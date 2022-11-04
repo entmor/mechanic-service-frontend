@@ -59,8 +59,8 @@ export class RepairsListComponent extends Subscriptions implements OnInit {
                         .getAllRepairs(
                             this.table.tablePageIndex,
                             this.table.tablePageSize,
-                            this.table.sort.active,
-                            this.table.sort.direction
+                            this.table.sort.direction,
+                            this.table.sort.active
                         )
                         .pipe(
                             catchError(() => {

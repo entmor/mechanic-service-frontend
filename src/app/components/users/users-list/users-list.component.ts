@@ -62,8 +62,8 @@ export class UsersListComponent extends Subscriptions implements OnInit {
                         .getAllUsers(
                             this.table.tablePageIndex,
                             this.table.tablePageSize,
-                            this.table.sort.active,
-                            this.table.sort.direction
+                            this.table.sort.direction,
+                            this.table.sort.active
                         )
                         .pipe(
                             catchError(() => {
