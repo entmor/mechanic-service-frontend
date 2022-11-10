@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CvCarService": {
+    "MechanicService": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "commonChunk": true,
-            "outputPath": "dist/cv-car-service",
+            "outputPath": "dist/mechanic-service",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "CvCarService:build:production"
+              "browserTarget": "MechanicService:build:production"
             },
             "development": {
-              "browserTarget": "CvCarService:build:development"
+              "browserTarget": "MechanicService:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "CvCarService:build"
+            "browserTarget": "MechanicService:build"
           }
         },
         "test": {

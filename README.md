@@ -1,27 +1,52 @@
-# CvCarService
+# Mechanic Service
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+Projekt mający na celu pokazanie umiejętności w Angular przeze mnie (Bartosz Chwarścianek)
+
+Wersja Angulara to 14++
+
+- `Routing` korzysta z:
+  - Lazy loading
+  - Guardów typu `CanActivate` czy `CanLoad` -> `src/app/guards`
+  - Resolverów ->  `src/app/resolvers`
+- `Component Repairs` został napisany w wzorcu `Model-View-Presenter` -> `src/app/components/Repairs`
+- Projekcie znajdują się `Componenty Standalone`
+- `Http Interceptor` został wykorzystany do przetwarzania danych z i do aplikacji za pomocą `HttpClient` -> `src/app/interceptor`
+- Mechanizm `Injection Token` został wykorzystany do prowadzenia pewnych danych, w różnych componentach które używaja tego samego componentu
+- **Store** 
+- - Do przechowywania globalnego stanu został wykorzytany `NGRX` -> `/src/app/store`
+- -  a także `@ngrx/effects`
+
+- **Testy**
+- - _Unit Tests_
+- - - Karma + Jasmine - niestety nie cała aplikacja została jeszcze pokryta testami UNIT.
+- - _E2E_
+- - - Cypress - pełne pokrycie aplikacji.
+- W aplikacji również jest wykorzytany `RXJS!`
+- Aplikacja korzysta z `Angular Material`,
+- itd.
+
+## Server Backend
+Tu znajdziesz backend do tego projektu, napisany również przeze mnie w NODE.js, wykorzystując Express.js, Docker oraz GRPC do komunikacji pomiędzy containerami 
+
+[Server Mechanic Service](https://github.com/entmor/mechanic-service-backend)
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+`ng serve` aby uruchomić wersje development, można użyć również flagi `-o`, aby automatyczne otworzyć w przeglądarce. 
 
-## Code scaffolding
+Domyśny adres i port to `http://localhost:4200`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Production Build
 
-## Build
+Użyj `ng build --configuration=production` aby wygenerować projekt w wersji produkcyjnej. Projekt będzie znajdował się w folderze `dist/`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Unit tests
 
-## Running unit tests
+Użyj `ng test` aby uruchomić Unit tests.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## E2E tests
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Co testowania E2E został wykorzystany Cypress. Testy mają być przeprowadzone w warunkach podobnych do produkcyjny (bez mockowania danych), dlatego należy uruchomić:
+1) [Server Mechanic Service:](https://github.com/entmor/mechanic-service-backend)`https://github.com/entmor/mechanic-service-backend` w wersji Development (wraz containerem Cypress)
+2) Uruchomić stronę poprzez `ng serve`
+3) Uruchomić cypress test. Dla wersji konsolowej: `npm run cypress:run`, wersja desktopowa `npm run cypress:open`
