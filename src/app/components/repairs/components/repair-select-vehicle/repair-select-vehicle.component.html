@@ -6,6 +6,7 @@
             placeholder="Szukaj: Rejestracja lub VIN"
             aria-label="Client"
             matInput
+            data-cy="searchVehicle"
             [formControl]="searchVehicle"
             [matAutocomplete]="auto"
         />
@@ -21,7 +22,11 @@
             (optionSelected)="vehicleSelected($event)"
             [displayWith]="displayAutocomplete"
         >
-            <mat-option *ngFor="let vehicle of listVehicles" [value]="vehicle">
+            <mat-option
+                data-cy="searchVehicleMatAutocomplete"
+                *ngFor="let vehicle of listVehicles"
+                [value]="vehicle"
+            >
                 {{ vehicle.plate }}
             </mat-option>
         </mat-autocomplete>
@@ -41,6 +46,7 @@
                     mat-flat-button
                     class="button-normal"
                     color="accent"
+                    data-cy="removeSelectedVehicle"
                     [style.font-size]="'30px'"
                     (click)="removeSelectedVehicle()"
                 >

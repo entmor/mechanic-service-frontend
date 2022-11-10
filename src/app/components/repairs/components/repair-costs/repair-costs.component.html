@@ -140,6 +140,7 @@
                         mat-flat-button
                         color="warn"
                         class="button-big"
+                        data-cy="deletePart"
                         (click)="deletePart(i)"
                         [style.font-size]="'26px'"
                     >
@@ -150,7 +151,13 @@
         </ng-container>
     </div>
     <div class="add-new-part-button-line">
-        <button mat-flat-button color="accent" class="button-big" (click)="addNewPart()">
+        <button
+            mat-flat-button
+            color="accent"
+            class="button-big"
+            data-cy="addNewPart"
+            (click)="addNewPart()"
+        >
             kolejny koszt
         </button>
     </div>

@@ -90,14 +90,14 @@
             <mat-form-field appearance="outline">
                 <mat-label>Typ silnika</mat-label>
                 <mat-select formControlName="engineType">
-                    <mat-option value="DIESEL">Diesel</mat-option>
-                    <mat-option value="PETROL">Benzyna</mat-option>
-                    <mat-option value="PETROL_LPG">Benzyna+LPG</mat-option>
-                    <mat-option value="PETROL_CNG">Benzyna+CNG</mat-option>
-                    <mat-option value="HYBRID">Hybryda</mat-option>
-                    <mat-option value="HYDROGEN">Wodór</mat-option>
-                    <mat-option value="ELECTRIC">Elektryczny</mat-option>
-                    <mat-option value="ETANOL">Etanol</mat-option>
+                    <mat-option value="DIESEL">{{ 'DIESEL' | engineType }}</mat-option>
+                    <mat-option value="PETROL">{{ 'PETROL' | engineType }}</mat-option>
+                    <mat-option value="PETROL_LPG">{{ 'PETROL_LPG' | engineType }}</mat-option>
+                    <mat-option value="PETROL_CNG">{{ 'PETROL_CNG' | engineType }}</mat-option>
+                    <mat-option value="HYBRID">{{ 'HYBRID' | engineType }}</mat-option>
+                    <mat-option value="HYDROGEN">{{ 'HYDROGEN' | engineType }}</mat-option>
+                    <mat-option value="ELECTRIC">{{ 'ELECTRIC' | engineType }}</mat-option>
+                    <mat-option value="ETANOL">{{ 'ETANOL' | engineType }}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -157,6 +157,7 @@
                             placeholder="Wpisz nazwę klienta, NIP lub ID"
                             aria-label="Client"
                             matInput
+                            data-cy="searchClientInput"
                             [formControl]="searchClient"
                             [matAutocomplete]="auto"
                         />
@@ -172,7 +173,11 @@
                             (optionSelected)="clientSelected($event)"
                             [displayWith]="showName"
                         >
-                            <mat-option *ngFor="let client of listClients" [value]="client">
+                            <mat-option
+                                *ngFor="let client of listClients"
+                                [value]="client"
+                                data-cy="searchClientMatAutocomplete"
+                            >
                                 {{ client.name }}
                                 <small *ngIf="client.taxNumber"
                                     >( NIP: {{ client.taxNumber }})</small
@@ -237,6 +242,7 @@
         (click)="setVehicle()"
         color="primary"
         class="button-big"
+        data-cy="saveVehicleDialog"
         [disabled]="form.invalid"
     >
         Dodaj pojazd
@@ -249,8 +255,9 @@
         (click)="updatedVehicle()"
         color="primary"
         class="button-big"
+        data-cy="editVehicleDialog"
         [disabled]="form.invalid"
     >
-        Edytuj pojazd
+        Edytuj pojazda
     </button>
 </mat-dialog-actions>

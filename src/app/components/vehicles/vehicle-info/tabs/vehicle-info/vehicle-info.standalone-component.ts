@@ -6,11 +6,12 @@ import { MatButtonModule } from '../../../../../modules/angular-material/angular
 import { MatDialog } from '@angular/material/dialog';
 import { VehicleFormDialogComponent } from '../../../dialogs/vehicle-form-dialog/vehicle-form-dialog.component';
 import { VehiclesService } from '../../../../../services/vehicles.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-vehicle-info',
     standalone: true,
-    imports: [CommonModule, PipesModule, MatButtonModule],
+    imports: [CommonModule, PipesModule, MatButtonModule, RouterModule],
     templateUrl: './vehicle-info.standalone-component.html',
 })
 export class VehicleInfoStandaloneComponent {

@@ -3,7 +3,7 @@
         <div class="col-auto">
             <mat-form-field appearance="outline" class="mat-form-field-make-all">
                 <mat-label>{{ placeholder }}</mat-label>
-                <mat-select [(value)]="selectedAction">
+                <mat-select [(value)]="selectedAction" data-cy="selectedTableAction">
                     <mat-option [value]="action.action" *ngFor="let action of actions">
                         {{ action.button }}
                     </mat-option>
@@ -16,6 +16,7 @@
                 mat-raised-button
                 color="primary"
                 class="button-normal"
+                data-cy="tableAction"
                 (click)="onSelectedAction()"
                 [disabled]="count === 0 || selectedAction === ''"
             >

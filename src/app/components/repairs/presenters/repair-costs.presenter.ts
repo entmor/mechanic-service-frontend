@@ -52,7 +52,7 @@ export class RepairCostsPresenter {
         const { count, tax, priceNetto } = this.getPartRow(index);
 
         part.get('priceBrutto')?.setValue(this.toBrutto(priceNetto, tax));
-        part.get('priceBuyNetto')?.setValue(priceNetto / count);
+        part.get('priceBuyNetto')?.setValue((priceNetto / count).toFixed(2));
     }
 
     changePriceBrutto(index: number): void {

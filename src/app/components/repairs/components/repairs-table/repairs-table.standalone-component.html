@@ -62,7 +62,7 @@
         <ng-container matColumnDef="plate">
             <th mat-header-cell *matHeaderCellDef>Pojazd</th>
             <td mat-cell *matCellDef="let row">
-                <a [routerLink]="['/dashboard', 'vehicles-list', 'info', row.vehicle?.id]">
+                <a [routerLink]="['/dashboard', 'vehicles', 'info', row.vehicle?.id]">
                     <p>{{ row.vehicle?.plate }}</p>
                     <p>
                         {{ row.vehicle?.engine.engineType | engineType }} <br />

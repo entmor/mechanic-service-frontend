@@ -45,8 +45,8 @@
 
             <!-- YEAR -->
             <div class="bi-tr" id="bi-tr-engineType">
-                <div class="bi-th">Rok produkcji:</div>
-                <div class="bi-td">{{ vehicle.engine?.engineType }}</div>
+                <div class="bi-th">Typ silnika:</div>
+                <div class="bi-td">{{ vehicle.engine?.engineType | engineType }}</div>
             </div>
 
             <!-- ENGINE_SIZE -->
@@ -62,7 +62,13 @@
             </div>
 
             <div class="button-line">
-                <button mat-flat-button color="primary" class="button-big" (click)="editVehicle()">
+                <button
+                    mat-flat-button
+                    color="primary"
+                    class="button-big"
+                    data-cy="editVehicle"
+                    (click)="editVehicle()"
+                >
                     Edytuj
                 </button>
             </div>
@@ -77,6 +83,18 @@
             <div class="bi-tr" id="bi-tr-id">
                 <div class="bi-th">ID:</div>
                 <div class="bi-td">{{ vehicle.id }}</div>
+            </div>
+
+            <p></p>
+
+            <!-- ID -->
+            <div class="bi-tr" id="bi-tr-client">
+                <div class="bi-th">Właściciel:</div>
+                <div class="bi-td">
+                    <a [routerLink]="['/dashboard', 'clients', 'info', vehicle.clientId]">
+                        <button mat-flat-button color="accent">Przejdź do właściciela</button>
+                    </a>
+                </div>
             </div>
 
             <p></p>

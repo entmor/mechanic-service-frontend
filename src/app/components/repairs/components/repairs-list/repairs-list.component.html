@@ -1,10 +1,14 @@
-<div id="cars-list-view" class="template-padding">
-    <app-page-header [subtitle]="'Lącznie napraw w bazie: '" [headerNavi]="headerNavi">
+<div id="repairs-list-view" class="template-padding">
+    <app-page-header
+        [subtitle]="'Łącznie napraw w bazie: ' + tableResultsLength"
+        [headerNavi]="headerNavi"
+    >
         <button
             right
             mat-flat-button
             class="button-big"
             color="primary"
+            data-cy="addRepair"
             [routerLink]="['/dashboard', 'repairs', 'add']"
         >
             Dodaj nową naprawę

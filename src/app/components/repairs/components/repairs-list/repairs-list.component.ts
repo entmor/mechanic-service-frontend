@@ -53,7 +53,7 @@ export class RepairsListComponent extends Subscriptions implements OnInit {
     ngAfterViewInit(): void {
         this.addSubscription = this.refreshTable$
             .pipe(
-                startWith({}),
+                // startWith({}),
                 switchMap(() => {
                     return this.repairsService
                         .getAllRepairs(

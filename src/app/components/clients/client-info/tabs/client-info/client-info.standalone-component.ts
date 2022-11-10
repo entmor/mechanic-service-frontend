@@ -34,8 +34,8 @@ export class ClientInfoStandaloneComponent {
         this.dialog.afterClosed().subscribe({
             next: (result) => {
                 if (result?.status === 'edited') {
-                    console.log();
                     this.clientsService.getClient(this.client.id || '').subscribe({
+                        next: (client) => (this.client = client),
                         error: (err) => console.log(err),
                     });
                 }

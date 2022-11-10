@@ -1,4 +1,10 @@
-<button class="button-icon" mat-flat-button color="accent" [matMenuTriggerFor]="menu">
+<button
+    class="button-icon"
+    mat-flat-button
+    color="accent"
+    [matMenuTriggerFor]="menu"
+    data-cy="action"
+>
     <span>Akcje</span>
     <feather-icon
         [style.margin-left]="'5px'"
@@ -12,6 +18,7 @@
     <button
         mat-menu-item
         color="warn"
+        data-cy="makeAction"
         *ngFor="let menu of menuList; let index"
         (click)="makeAction(menu.action)"
     >

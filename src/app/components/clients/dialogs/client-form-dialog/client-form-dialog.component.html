@@ -125,6 +125,7 @@
         mat-flat-button
         color="primary"
         class="button-big"
+        data-cy="saveClientDialog"
         [disabled]="form.invalid || isSaving || !form.dirty"
         (click)="saveClient()"
     >

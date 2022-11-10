@@ -15,17 +15,8 @@ export class EngineTypePipe implements PipeTransform {
         ETANOL: 'Etanol',
     };
 
-    transform(
-        value:
-            | 'PETROL'
-            | 'DIESEL'
-            | 'PETROL_LPG'
-            | 'PETROL_CNG'
-            | 'HYBRID'
-            | 'HYDROGEN'
-            | 'ELECTRIC'
-            | 'ETANOL'
-    ): string {
-        return this.engineTypes[value] || 'none';
+    transform(value: string | undefined): string {
+        // @ts-ignore
+        return value ? this.engineTypes[value] : 'none';
     }
 }

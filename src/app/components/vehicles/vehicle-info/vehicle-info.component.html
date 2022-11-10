@@ -1,6 +1,13 @@
 <div id="car-edit" class="template-padding">
     <app-page-header title="Informaje o pojeździe: " [headerNavi]="headerNavi">
-        <button right mat-flat-button class="button-big" color="warn" (click)="deleteVehicle()">
+        <button
+            right
+            mat-flat-button
+            class="button-big"
+            color="warn"
+            data-cy="deleteVehicle"
+            (click)="deleteVehicle()"
+        >
             Usuń pojazd
         </button>
     </app-page-header>

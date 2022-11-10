@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
 import { VehiclesService } from '../../../../services/vehicles.service';
 import { Vehicle } from '../../../../interface/vehicle.interface';
 import { FormControl } from '@angular/forms';
@@ -18,7 +25,7 @@ export class RepairSelectVehicleContainerComponent {
 
     /***************  CONSTRUCTOR  ***************/
 
-    constructor(private vehiclesService: VehiclesService) {}
+    constructor(private vehiclesService: VehiclesService, private cdRef: ChangeDetectorRef) {}
 
     /***************  METHODS   ***************/
 
@@ -28,11 +35,14 @@ export class RepairSelectVehicleContainerComponent {
 
     getVehicles(value: string) {
         this.vehiclesService
-            .getAllVehicles(1, 0, 'createdAt', 'desc', {
+            .getAllVehicles(1, 0, 'desc', 'createdAt', {
                 plate: {
                     $find: value,
                 },
             })
-            .subscribe((response) => (this.vehicles = response.data));
+            .subscribe((response) => {
+                this.vehicles = response.data;
+                this.cdRef.detectChanges();
+            });
     }
 }

@@ -6,7 +6,13 @@
 <mat-dialog-actions align="end">
     <!-- The mat-dialogs-close directive optionally accepts a value as a result for the dialogs. -->
     <button mat-flat-button mat-dialog-close="">Anuluj</button>
-    <button mat-flat-button color="warn" class="button-big" (click)="makeAction()">
+    <button
+        mat-flat-button
+        color="warn"
+        class="button-big"
+        data-cy="makeMultiAction"
+        (click)="makeAction()"
+    >
         Wykonaj akcje
     </button>
 </mat-dialog-actions>

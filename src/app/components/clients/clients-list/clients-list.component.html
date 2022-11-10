@@ -1,9 +1,16 @@
 <div id="clients-list-view" class="template-padding">
     <app-page-header
-        [subtitle]="'Lącznie liczba klientów: ' + tableResultsLength"
+        [subtitle]="'Łącznie liczba klientów: ' + tableResultsLength"
         [headerNavi]="headerNavi"
     >
-        <button right mat-flat-button class="button-big" color="primary" (click)="addClient()">
+        <button
+            right
+            mat-flat-button
+            class="button-big"
+            color="primary"
+            data-cy="addClient"
+            (click)="addClient()"
+        >
             Dodaj nowego klienta
         </button>
     </app-page-header>
