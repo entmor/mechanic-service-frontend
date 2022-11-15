@@ -80,7 +80,6 @@ export class AuthEffects {
             this.actions$.pipe(
                 ofType(authLogout),
                 switchMap(({ token }) => {
-                    console.log(token);
                     if (token) {
                         return this.authService.deleteAuth(token || '').pipe(map((value) => {}));
                     } else {

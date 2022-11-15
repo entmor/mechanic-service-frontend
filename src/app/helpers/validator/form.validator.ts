@@ -81,7 +81,6 @@ export class FormValidator {
             | AbstractControl<number | null>
             | null
     ): string {
-        // console.log(control);
         //PASSWORD REPEAT ERROR
         if (control?.hasError('mustMatchPassword')) return 'Powtórzone hasło musi być takie samo';
         // email ERROR
