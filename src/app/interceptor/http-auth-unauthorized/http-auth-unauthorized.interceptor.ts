@@ -28,7 +28,7 @@ export class HttpAuthUnauthorizedInterceptor implements HttpInterceptor {
                     this.store.dispatch(authCheckTokenFail());
                 }
 
-                return throwError(() => new Error(err.message));
+                return throwError(() => err);
             })
         );
     }

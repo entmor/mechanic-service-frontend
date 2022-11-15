@@ -137,6 +137,7 @@ export class UserFormDialogComponent implements OnInit {
     }
 
     private onSaveUserError(err: any): void {
+        console.log(err);
         if (err.status === 409 && err.error.details === 'USER EXIST') {
             this.isUserExist = true;
         } else {

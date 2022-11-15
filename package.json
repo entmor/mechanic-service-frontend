@@ -1,6 +1,6 @@
 {
-  "name": "cv-car-service",
-  "version": "0.0.0",
+  "name": "mechanic-servive",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
